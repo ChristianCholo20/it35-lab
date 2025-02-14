@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.1",
   "type": "module",
-  "homepage": "https://github.com/ChristianCholo20/it35-lab.git",
+  "homepage": "https://github.com/ChristianCholo20/it35-lab",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
