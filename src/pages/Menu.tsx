@@ -19,7 +19,6 @@ import {
   import Home from './Home';
   import About from './About';
   import Details from './Details';
-  import EditProfile from './EditProfile';
   
   const Menu: React.FC = () => {
     const path = [
@@ -62,7 +61,6 @@ import {
                     <Route exact path="/it35-lab/app/home" component={Home} />
                     <Route exact path="/it35-lab/app/home/details" component={Details} />
                     <Route exact path="/it35-lab/app/about" component={About} />
-                    <Route exact path="/it35-lab/app/profile" component={EditProfile} />
   
   
                     <Route exact path="/it35-lab/app">
