@@ -1,3 +1,4 @@
+
 import { 
   IonButtons,
     IonContent, 
@@ -30,7 +31,10 @@ const Search: React.FC = () => {
         >
           Search
         </div>
+
       </IonContent>
     </IonPage>
   );
 };
+
+export default Search;
