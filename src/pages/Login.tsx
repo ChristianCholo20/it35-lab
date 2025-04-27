@@ -104,10 +104,16 @@ const Login: React.FC = () => {
             <div style={{ textAlign: 'left', marginBottom: '15px' }}>
               <label style={{ color: '#ccc', fontSize: '14px' }}>Email</label>
               <IonInput
-                style={{ marginTop: '5px' }}
+          
                 fill="outline"
                 type="email"
                 placeholder="Enter your email"
+                style={{
+                  borderRadius: '12px',
+                  marginBottom: '10px',
+                  '--highlight-color-focused': '#008000',
+                  '--border-color': '#008000'
+          }}
                 value={email}
                 onIonInput={e => setEmail(e.detail.value!)}
               />
@@ -116,10 +122,16 @@ const Login: React.FC = () => {
             <div style={{ textAlign: 'left', marginBottom: '15px' }}>
               <label style={{ color: '#ccc', fontSize: '14px' }}>Password</label>
               <IonInput
-                style={{ marginTop: '5px' }}
+              
                 fill="outline"
                 type="password"
                 placeholder="Enter Password"
+                style={{
+                  borderRadius: '12px',
+                  marginBottom: '10px',
+                  '--highlight-color-focused': '#008000',
+                  '--border-color': '#008000'
+          }}
                 value={password}
                 onIonInput={e => setPassword(e.detail.value!)}
               >
@@ -128,9 +140,15 @@ const Login: React.FC = () => {
             </div>
 
             {/* Login Button */}
-            <IonButton expand="block" shape="round" onClick={doLogin}>
-              Login
-            </IonButton>
+            <IonButton
+            onClick={doLogin}
+            expand="full"
+            fill="solid"
+            color="success"
+            style={{ marginTop: '20px' }}
+          >
+            Login
+          </IonButton>
 
             {/* Register Link */}
             <div style={{ marginTop: '20px', fontSize: '14px', color: '#ccc' }}>
