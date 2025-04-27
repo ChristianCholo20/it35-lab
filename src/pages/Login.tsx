@@ -1,16 +1,15 @@
-import { 
+import {
   IonAlert,
-  IonAvatar,
   IonButton,
-  IonContent, 
-  IonIcon, 
-  IonInput, 
-  IonInputPasswordToggle,  
-  IonPage,  
-  IonToast,  
-  useIonRouter
+  IonContent,
+  IonIcon,
+  IonInput,
+  IonInputPasswordToggle,
+  IonPage,
+  IonToast,
+  useIonRouter,
 } from '@ionic/react';
-import { logoIonic } from 'ionicons/icons';
+import { logoGoogle, logoFacebook } from 'ionicons/icons';
 import { useState } from 'react';
 import { supabase } from '../utils/supabaseClient';
 
@@ -43,75 +42,105 @@ const Login: React.FC = () => {
       return;
     }
 
-    setShowToast(true); 
+    setShowToast(true);
     setTimeout(() => {
       navigation.push('/it35-lab/app', 'forward', 'replace');
     }, 300);
   };
-  
+
   return (
     <IonPage>
-      <IonContent className='ion-padding'>
+      <IonContent className="ion-padding" fullscreen style={{
+        backgroundImage: 'url(https://images.unsplash.com/photo-1600585154340-be6161a56a0c)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}>
         <div style={{
           display: 'flex',
-          flexDirection:'column',
+          flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          marginTop:'25%'
+          height: '100%',
+          backdropFilter: 'blur(10px)',
         }}>
-          <IonAvatar
-            style={{
+          <div style={{
+            background: 'rgba(255, 255, 255, 0.1)',
+            padding: '40px 30px',
+            borderRadius: '20px',
+            backdropFilter: 'blur(20px)',
+            boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+            border: '1px solid rgba(255, 255, 255, 0.18)',
+            width: '90%',
+            maxWidth: '400px',
+            textAlign: 'center',
+          }}>
+            <h2 style={{ color: 'white', marginBottom: '10px' }}>Welcome Back!</h2>
+            <p style={{ color: '#ccc', marginBottom: '20px' }}>Enter your details below to sign in into your account</p>
+
+            {/* Google and Facebook Buttons */}
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
+              <IonButton color="light" expand="block" style={{ flex: 1 }} shape="round">
+                <IonIcon icon={logoGoogle} slot="start" />
+                Google
+              </IonButton>
+              <IonButton color="primary" expand="block" style={{ flex: 1 }} shape="round">
+                <IonIcon icon={logoFacebook} slot="start" />
+                Facebook
+              </IonButton>
+            </div>
+
+            <div style={{
+              margin: '20px 0',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'center',
-              width: '150px',
-              height: '150px',
-              borderRadius: '50%', 
-              overflow: 'hidden' 
-            }}
-          >
-            <IonIcon 
-              icon={logoIonic}
-              color='primary'
-              style={{ fontSize: '120px', color: '#6c757d' }} 
-            />
-          </IonAvatar>
-          <h1 style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}>USER LOGIN</h1>
-          <IonInput
-            label="Email" 
-            labelPlacement="floating" 
-            fill="outline"
-            type="email"
-            placeholder="Enter Email"
-            value={email}
-            onIonChange={e => setEmail(e.detail.value!)}
-          />
-          <IonInput style={{ marginTop:'10px' }}      
-            fill="outline"
-            type="password"
-            placeholder="Password"
-            value={password}
-            onIonChange={e => setPassword(e.detail.value!)}
-          >
-            <IonInputPasswordToggle slot="end"></IonInputPasswordToggle>
-          </IonInput>
+              color: '#aaa'
+            }}>
+              <hr style={{ flex: 1, borderColor: '#555' }} />
+              <span style={{ padding: '0 10px' }}>or</span>
+              <hr style={{ flex: 1, borderColor: '#555' }} />
+            </div>
+
+            {/* Email and Password Inputs */}
+            <div style={{ textAlign: 'left', marginBottom: '15px' }}>
+              <label style={{ color: '#ccc', fontSize: '14px' }}>Email</label>
+              <IonInput
+                style={{ marginTop: '5px' }}
+                fill="outline"
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onIonInput={e => setEmail(e.detail.value!)}
+              />
+            </div>
+
+            <div style={{ textAlign: 'left', marginBottom: '15px' }}>
+              <label style={{ color: '#ccc', fontSize: '14px' }}>Password</label>
+              <IonInput
+                style={{ marginTop: '5px' }}
+                fill="outline"
+                type="password"
+                placeholder="Enter Password"
+                value={password}
+                onIonInput={e => setPassword(e.detail.value!)}
+              >
+                <IonInputPasswordToggle slot="end" />
+              </IonInput>
+            </div>
+
+            {/* Login Button */}
+            <IonButton expand="block" shape="round" onClick={doLogin}>
+              Login
+            </IonButton>
+
+            {/* Register Link */}
+            <div style={{ marginTop: '20px', fontSize: '14px', color: '#ccc' }}>
+              Don't have an account? <a href="/it35-lab/register" style={{ color: '#4e9bff' }}>Sign Up</a>
+            </div>
+          </div>
         </div>
-        <IonButton onClick={doLogin} expand="full" shape='round'>
-          Login
-        </IonButton>
 
-        <IonButton routerLink="/it35-lab/register" expand="full" fill="clear" shape='round'>
-          Don't have an account? Register here
-        </IonButton>
-
-        {/* Reusable AlertBox Component */}
+        {/* Alerts and Toasts */}
         <AlertBox message={alertMessage} isOpen={showAlert} onClose={() => setShowAlert(false)} />
-
-        {/* IonToast for success message */}
         <IonToast
           isOpen={showToast}
           onDidDismiss={() => setShowToast(false)}
