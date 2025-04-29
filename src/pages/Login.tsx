@@ -77,17 +77,6 @@ const Login: React.FC = () => {
             <h2 style={{ color: 'white', marginBottom: '10px' }}>Welcome Back!</h2>
             <p style={{ color: '#ccc', marginBottom: '20px' }}>Enter your details below to sign in into your account</p>
 
-            {/* Google and Facebook Buttons */}
-            <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
-              <IonButton color="light" expand="block" style={{ flex: 1 }} shape="round">
-                <IonIcon icon={logoGoogle} slot="start" />
-                Google
-              </IonButton>
-              <IonButton color="primary" expand="block" style={{ flex: 1 }} shape="round">
-                <IonIcon icon={logoFacebook} slot="start" />
-                Facebook
-              </IonButton>
-            </div>
 
             <div style={{
               margin: '20px 0',
@@ -96,7 +85,6 @@ const Login: React.FC = () => {
               color: '#aaa'
             }}>
               <hr style={{ flex: 1, borderColor: '#555' }} />
-              <span style={{ padding: '0 10px' }}>or</span>
               <hr style={{ flex: 1, borderColor: '#555' }} />
             </div>
 
@@ -150,10 +138,13 @@ const Login: React.FC = () => {
             Login
           </IonButton>
 
-            {/* Register Link */}
-            <div style={{ marginTop: '20px', fontSize: '14px', color: '#ccc' }}>
-              Don't have an account? <a href="/it35-lab/register" style={{ color: '#4e9bff' }}>Sign Up</a>
-            </div>
+          <IonButton routerLink="/it35-lab/register" 
+          expand="full"
+          fill="clear"
+          shape="round"
+          color="success">
+           Don't have an account? Register here
+         </IonButton>
           </div>
         </div>
 

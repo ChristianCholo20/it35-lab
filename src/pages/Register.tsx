@@ -202,12 +202,16 @@ const Register: React.FC = () => {
             color="success"
             style={{ marginTop: '20px' }} >
              
-             
               Register
             </IonButton>
-            <p style={{ textAlign: 'center', color: '#aaa', fontSize: '14px' }}>
-            Already have an account? <a href="/it35-lab" style={{ color: '#6c63ff', textDecoration: 'none' }}>Sign In</a>
-          </p>
+            <IonButton routerLink="/it35-lab" 
+             expand="full"
+             fill="clear"
+             shape="round"
+             color="success">
+
+            Already have an account?
+         </IonButton>
           </div>
         </div>
 
@@ -232,9 +236,10 @@ const Register: React.FC = () => {
               <p>Your account has been created successfully.</p>
               <p>Please check your email to verify.</p>
             </IonText>
-            <IonButton onClick={handleOpenVerificationModal} expand="full" color="success" style={{ marginTop: '10px' }}>
-            Create account
-          </IonButton>
+                                <IonButton routerLink="/it35-lab" routerDirection="back" color="primary">
+                                    Go to Login
+                                </IonButton>
+                           
 
 
 
